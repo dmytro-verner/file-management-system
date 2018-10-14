@@ -1,5 +1,7 @@
 package com.dmytro_verner.files
 
+import com.dmytro_verner.filesystem.FileSystemException
+
 import scala.annotation.tailrec
 
 class Directory(override val parentPath: String, override val name: String, val contents: List[DirEntry])
@@ -34,6 +36,8 @@ class Directory(override val parentPath: String, override val name: String, val 
     new Directory(parentPath, name, contents.filter(e => !e.name.equals(entryName)) :+ newEntry)
 
   override def asDirectory: Directory = this
+
+  override def asFile: File = throw new FileSystemException("Directory can't be converted to a file")
 
   def getType: String = "Directory"
 }
