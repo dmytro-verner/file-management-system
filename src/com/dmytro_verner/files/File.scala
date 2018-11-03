@@ -2,7 +2,7 @@ package com.dmytro_verner.files
 
 import com.dmytro_verner.filesystem.FileSystemException
 
-class File(override val parentPath: String, override val name: String, contents: String)
+class File(override val parentPath: String, override val name: String, val contents: String)
   extends DirEntry(parentPath, name) {
 
   override def asDirectory: Directory =
